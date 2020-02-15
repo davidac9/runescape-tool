@@ -26,12 +26,12 @@ app.post('/api/loadouts/items', ctrl.addLoadoutItem) // works
 app.put('/api/loadouts', ctrl.updateLoadout) // works
 app.put('/api/loadouts/items', ctrl.updateLoadoutItem) // works
 
-app.get('/api/items/names', ctrl.getItemNames) // 
-app.get('/api/loadouts/names', ctrl.getLoadoutNames)
-app.get('/api/items', ctrl.getItemImage)
-app.get('/api/loadouts', ctrl.getLoadout)
+app.get('/api/items/names', ctrl.getItemNames) // works
+app.get('/api/loadouts/names', ctrl.getLoadoutNames) // works
+app.get('/api/items', ctrl.getItemImage) // works
+app.get('/api/loadouts', ctrl.getLoadout) // this one has a problem
 
-app.delete('/api/items', ctrl.deleteItem)
+app.delete('/api/items', ctrl.deleteItem) // 
 app.delete('/api/loadouts/items', ctrl.deleteLoadoutItem)
 app.delete('/api/loadouts', ctrl.deleteLoadout)
 

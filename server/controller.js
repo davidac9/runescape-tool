@@ -32,7 +32,7 @@ module.exports = {
     updateLoadout: async (req, res) => {
         const db = req.app.get('db')
         try {
-            const updatedLoadout = db.update_loadout(req.body)
+            const updatedLoadout = await db.update_loadout(req.body)
             res.status(200).send(updatedLoadout)
         } catch {
             console.log('failed to update loadout')
@@ -41,7 +41,7 @@ module.exports = {
     updateLoadoutItem: async (req, res) => {
         const db = req.app.get('db')
         try {
-            const updatedLoadoutItem = db.update_loadout_item(req.body)
+            const updatedLoadoutItem = await db.update_loadout_item(req.body)
             res.status(200).send(updatedLoadoutItem)
         } catch {
             console.log('failed to update loadout item')
@@ -52,7 +52,7 @@ module.exports = {
     getItemNames: async (req, res) => {
         const db = req.app.get('db')
         try {
-            const itemNames = db.select_item_names
+            const itemNames = await db.select_item_names()
             res.status(200).send(itemNames)
         } catch {
             console.log('failed to get item names')
@@ -61,7 +61,7 @@ module.exports = {
     getLoadoutNames: async (req, res) => {
         const db = req.app.get('db')
         try {
-            const loadoutNames = db.select_loadout_names
+            const loadoutNames = await db.select_loadout_names()
             res.status(200).send(loadoutNames)
         } catch {
             console.log('failed to get item names')
@@ -70,7 +70,7 @@ module.exports = {
     getItemImage: async (req, res) => {
         const db = req.app.get('db')
         try {
-            const itemImage = db.select_item_image(req.params)
+            const itemImage = await db.select_item_image([req.query.item_id])
             res.status(200).send(itemImage)
         }
         catch {
@@ -80,7 +80,7 @@ module.exports = {
     getLoadout: async (req, res) => {
         const db = req.app.get('db')
         try {
-            const loadout = db.select_loadout(req.params)
+            const loadout = await db.select_loadout(req.query.loadout_id)
             res.status(200).send(loadout)
         } catch {
             console.log('failed to get loadout')
@@ -92,7 +92,7 @@ module.exports = {
         const db = req.app.get('db')
         try {
             const { item_id } = req.query
-            const item = db.delete_item([item_id])
+            const item = await db.delete_item([item_id])
             res.status(200).send(item)
         } catch {
             console.log('failed to delete item')
@@ -102,7 +102,7 @@ module.exports = {
         const db = req.app.get('db')
         try {
             const { loadout_id, item_location } = req.query
-            const loadoutItem = db.delete_loadout_item({ loadout_id, item_location })
+            const loadoutItem = await db.delete_loadout_item({ loadout_id, item_location })
             res.status(200).send(loadoutItem)
         } catch {
             console.log('failed to delete loadout item')
@@ -112,7 +112,7 @@ module.exports = {
         const db = req.app.get('db')
         try {
             const { loadout_id } = req.query
-            const loadout = db.delete_loadout([loadout_id])
+            const loadout = await db.delete_loadout([loadout_id])
             res.status(200).send(loadout)
         } catch {
             console.log('failed to delete loadout')
