@@ -61,8 +61,13 @@ module.exports = {
     getLoadoutNames: async (req, res) => {
         const db = req.app.get('db')
         try {
-            const loadoutNames = await db.select_loadout_names()
-            res.status(200).send(loadoutNames)
+            if (!req.query.loadout_id) {
+                const loadoutNames = await db.select_loadout_names()
+                res.status(200).send(loadoutNames)
+            } else {
+                const loadoutName = await db.select_loadout_name([req.query.loadout_id])
+                res.status(200).send(loadoutName)
+            }
         } catch {
             console.log('failed to get item names')
         }
@@ -77,10 +82,10 @@ module.exports = {
             console.log('failed to get item image')
         }
     },
-    getLoadout: async (req, res) => {
+    getLoadoutItems: async (req, res) => {
         const db = req.app.get('db')
         try {
-            const loadout = await db.select_loadout(req.query.loadout_id)
+            const loadout = await db.select_loadout_items(req.query.loadout_id)
             res.status(200).send(loadout)
         } catch {
             console.log('failed to get loadout')

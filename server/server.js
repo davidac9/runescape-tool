@@ -29,7 +29,7 @@ app.put('/api/loadouts/items', ctrl.updateLoadoutItem) // works
 app.get('/api/items/names', ctrl.getItemNames) // works
 app.get('/api/loadouts/names', ctrl.getLoadoutNames) // works
 app.get('/api/items', ctrl.getItemImage) // works
-app.get('/api/loadouts', ctrl.getLoadout) // this one has a problem
+app.get('/api/loadouts', ctrl.getLoadoutItems) // this one has a problem
 
 app.delete('/api/items', ctrl.deleteItem) // 
 app.delete('/api/loadouts/items', ctrl.deleteLoadoutItem)
