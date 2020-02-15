@@ -1,0 +1,1 @@
+SELECT loadout_id, loadout_name FROM loadout;

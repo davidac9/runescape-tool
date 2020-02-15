@@ -1,1 +1,1 @@
-SELECT item_id, item_name FROM item_id;
+SELECT item_id, item_name FROM item;

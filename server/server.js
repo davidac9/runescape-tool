@@ -3,7 +3,7 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
-// const authCtrl = require('./authController')
+const ctrl = require('./controller')
 
 const app = express()
 app.use( express.static( `${__dirname}/../build`))
@@ -18,6 +18,23 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 * 10
     }
 }))
+
+app.post('/api/items', ctrl.addItem) // works
+app.post('/api/loadouts', ctrl.addLoadout) // works
+app.post('/api/loadouts/items', ctrl.addLoadoutItem) // works
+
+app.put('/api/loadouts', ctrl.updateLoadout) // works
+app.put('/api/loadouts/items', ctrl.updateLoadoutItem) // works
+
+app.get('/api/items/names', ctrl.getItemNames) // 
+app.get('/api/loadouts/names', ctrl.getLoadoutNames)
+app.get('/api/items', ctrl.getItemImage)
+app.get('/api/loadouts', ctrl.getLoadout)
+
+app.delete('/api/items', ctrl.deleteItem)
+app.delete('/api/loadouts/items', ctrl.deleteLoadoutItem)
+app.delete('/api/loadouts', ctrl.deleteLoadout)
+
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
