@@ -8,7 +8,7 @@ export default class Search extends Component {
 
     render() {
         const names = this.props.names.map(el => (
-            <li className='search-result' onClick={() => {this.props.function(el.item_id)}} >
+            <li className='search-result' onClick={() => {this.props.function(el[this.props.idKey])}} >
                 {el[this.props.nameKey]}
             </li>
         ))
