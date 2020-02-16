@@ -7,11 +7,17 @@ export default class Search extends Component {
 
 
     render() {
+        const names = this.props.names.map(el => (
+            <li className='search-result' >
+                {el[this.props.nameKey]}
+            </li>
+        ))
         return (
             <div className="Search">
                 <input className="search-input" placeholder="filter items"/>
                 <div className="result-container">
-                    <li className="search-result">crab</li>
+                    {names}
+                    {/* <li className="search-result">crab</li>
                     <li className="search-result">Abyssal whip</li>
                     <li className="search-result">Ruby ring</li>
                     <li className="search-result">dragon spear</li>
@@ -25,7 +31,7 @@ export default class Search extends Component {
                     <li className="search-result">crab</li>
                     <li className="search-result">crab</li>
                     <li className="search-result">crab</li>
-                    <li className="search-result">crab</li>
+                    <li className="search-result">crab</li> */}
                 </div>
             </div>
         )

@@ -26,7 +26,10 @@ class Dashboard extends Component {
 
     return (
       <div className="Dashboard">
-      <Search/>
+      <Search
+      names={this.state.itemNames}
+      nameKey={'item_name'}
+      />
     </div>
   );
 }
