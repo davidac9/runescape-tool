@@ -22,6 +22,15 @@ class Dashboard extends Component {
     })
   }
 
+  getItem = (ID) => {
+      axios.get(`/api/items?item_id=${ID}`).then(res => {
+          this.setState({
+              currentItemImage: res.data[0].item_image,
+              currentItemID: res.data[0].item_id
+          })
+      })
+  }
+
   render() {
 
     return (
@@ -29,7 +38,10 @@ class Dashboard extends Component {
       <Search
       names={this.state.itemNames}
       nameKey={'item_name'}
+      placeholder={'filter items'}
+      function={this.getItem}
       />
+      <img src={this.state.currentItemImage} alt=""/>
     </div>
   );
 }

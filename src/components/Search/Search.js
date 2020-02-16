@@ -8,30 +8,16 @@ export default class Search extends Component {
 
     render() {
         const names = this.props.names.map(el => (
-            <li className='search-result' >
+            <li className='search-result' onClick={() => {this.props.function(el.item_id)}} >
                 {el[this.props.nameKey]}
             </li>
         ))
         return (
             <div className="Search">
-                <input className="search-input" placeholder="filter items"/>
+                <input className="search-input" placeholder={this.props.placeholder}/>
                 <div className="result-container">
                     {names}
-                    {/* <li className="search-result">crab</li>
-                    <li className="search-result">Abyssal whip</li>
-                    <li className="search-result">Ruby ring</li>
-                    <li className="search-result">dragon spear</li>
-                    <li className="search-result">crabacrabacrabacrabacrabacra bacrabacrabacrabacraba</li>
-                    <li className="search-result">crab</li>
-                    <li className="search-result">crab</li>
-                    <li className="search-result">crab</li>
-                    <li className="search-result">crab</li>
-                    <li className="search-result">crab</li>
-                    <li className="search-result">crab</li>
-                    <li className="search-result">crab</li>
-                    <li className="search-result">crab</li>
-                    <li className="search-result">crab</li>
-                    <li className="search-result">crab</li> */}
+
                 </div>
             </div>
         )
